@@ -1,8 +1,65 @@
 import numpy as np
 
-def calculate(list):
+# função que aceita uma lista de exatamente 9 números
+# converte essa lista em um array NumPy 3x3 
+def calculando(entrada):
+    if len(entrada) != 9:
+        raise ValueError('Lista deve conter 9 números.')
+    arr = np.array(entrada).reshape(3, 3)
 
+    # usando funções Numpy para cada estatística
 
+    # each metric should contain: list of calculos by columns - axis=0
+    # list of calculations by rows - axis = 1
+    # scalar calculation for all elements - flattened
 
+    # "mean" - média:
+    mean_col = np.mean(arr, axis=0).tolist()
+    mean_row = np.mean(arr, axis=1).tolist()
+    mean_flat = np.mean(arr).tolist()
 
-    return calculations
+    #"variance" - variância:
+    var_col = np.var(arr, axis=0).tolist()
+    var_row = np.var(arr, axis=1).tolist()
+    var_flat = np.var(arr).tolist()
+
+    #"standard deviation" - desvio padrão:
+    std_col = np.std(arr, axis=0).tolist()
+    std_row = np.std(arr, axis=1).tolist()
+    std_flat = np.std(arr).tolist()
+
+    #"max" - máximo:
+    max_col = np.max(arr, axis=0).tolist()
+    max_row = np.max(arr, axis=1).tolist()
+    max_flat = np.max(arr).tolist()
+
+    #"min" - mínimo:
+    min_col = np.min(arr, axis=0).tolist()
+    min_row = np.min(arr, axis=1).tolist()
+    min_flat = np.min(arr).tolist()
+
+    #"sum" - soma:
+    sum_col = np.sum(arr, axis=0).tolist()
+    sum_row = np.sum(arr, axis=1).tolist()
+    sum_flat = np.sum(arr).tolist()
+
+    # retorna o dicionário
+    calculos = { 
+        'mean': [mean_col, mean_row, mean_flat],
+        'variance': [var_col, var_row, var_flat],
+        'standard deviation': [std_col, std_row, std_flat],
+        'max': [max_col, max_row, max_flat],
+        'min': [min_col, min_row, min_flat],
+        'sum': [sum_col, sum_row, sum_flat]
+    }
+
+    return calculos
+
+# obtém o dicionário
+resultados = calculando([0, 1, 2, 3, 4, 5, 6, 7, 8])
+
+# imprime o dicionário com quebras de linha
+print('{')
+for key, value in resultados.items():
+    print(f"  '{key}': {value},")
+print('}')
