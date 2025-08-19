@@ -2,9 +2,9 @@ import numpy as np
 
 # função que aceita uma lista de exatamente 9 números
 # converte essa lista em um array NumPy 3x3 
-def calculando(entrada):
+def calculate(entrada):
     if len(entrada) != 9:
-        raise ValueError('Lista deve conter 9 números.')
+        raise ValueError('List must contain nine numbers.')
     arr = np.array(entrada).reshape(3, 3)
 
     # usando funções Numpy para cada estatística
@@ -56,7 +56,7 @@ def calculando(entrada):
     return calculos
 
 # obtém o dicionário
-resultados = calculando([0, 1, 2, 3, 4, 5, 6, 7, 8])
+resultados = calculate([0, 1, 2, 3, 4, 5, 6, 7, 8])
 
 # imprime o dicionário com quebras de linha
 print('{')
